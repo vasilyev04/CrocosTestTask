@@ -1,7 +1,7 @@
 # Crocos Test Task
 ### Получение данных
 В данный момент данные генируются согласно ТЗ локально на устройстве пользователя, однако их источник легко заменить например на API бекенда или любой другой, для этого достаточно изменить  *OrderRepositoryImpl*, и модели данных без проблем дойдут до конечного слоя представления. Гибкость и изменяемость достигается за счет архитектурного подход Clean Architecture.
-```
+```kotlin
 object OrderRepositoryImpl : OrdersRepository{
     private val mapper = OrderMapper()
     private val someDataSource = SomeDataSource() - Retrofit, Room, Firebase либо все что угодно
@@ -29,7 +29,7 @@ object OrderRepositoryImpl : OrdersRepository{
 ---
 ### Напоминание при клонировании
 После клонирования проект сам по себе не запустится, так как вылезет ошибка об отсутствии API ключа, потому что мой ключ спрятан в *secrets.properties* проекта. Данную строчку кода внутри *ApiService* нужно заменить на ваш API-ключ, для которого включен Google Map API и Directions API.
-```
+```kotlin
 interface ApiService {
 
     @GET("/maps/api/directions/json")
@@ -41,7 +41,7 @@ interface ApiService {
 
 
     companion object{
-        private const val API_KEY = BuildConfig.MAPS_API_KEY --------------------------- ВАШ API-КЛЮЧ ДОЛЖЕН БЫТЬ ЗДЕСЬ
+        private const val API_KEY = BuildConfig.MAPS_API_KEY //--------------------------- ВАШ API-КЛЮЧ ДОЛЖЕН БЫТЬ ЗДЕСЬ
     }
 }
 ```

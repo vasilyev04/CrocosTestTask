@@ -1,0 +1,33 @@
+<resources>
+    <string name="title_my_orders">My Orders</string>
+    <string name="title_order_details">Order Details</string>
+    <string name="title_order_tracking">Order Tracking</string>
+    <string name="app_name">CrocosTestTask</string>
+    <string name="card_order_id">Order ID:</string>
+    <string name="card_amount_paid">Amount Paid:</string>
+    <string name="card_to_be_delivered">To be delivered at</string>
+
+    <string name="details_order_date">Order Date:</string>
+    <string name="details_order_count">Qty:</string>
+    <string name="details_order_delivery_time">Order will be delivered at</string>
+    <string name="upcoming_orders">Upcoming Orders</string>
+    <string name="past_orders">Past Orders</string>
+    <string name="no_past_orders_yet">No Past Orders yet</string>
+    <string name="order_date">Order Date:</string>
+    <string name="sub_total">Sub Total</string>
+    <string name="taxes">Taxes</string>
+    <string name="delivery_fee">Delivery Fee</string>
+    <string name="total">Total</string>
+    <string name="track_order">Track order</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="your_order_is_on_the_way">Your order is on the way</string>
+    <string name="approximate_time_of_delivery">Approximate time of delivery</string>
+    <string name="status_ordered">Ordered</string>
+    <string name="status_packed">Packed</string>
+    <string name="status_delivered">Delivered</string>
+    <string name="not_delivered_yet">Not delivered yet</string>
+    <string name="not_packed_yet">Not packed yet</string>
+    <string name="amount_paid">Amount Paid:</string>
+    <string name="order_summary">Order Summary</string>
+
+</resources>

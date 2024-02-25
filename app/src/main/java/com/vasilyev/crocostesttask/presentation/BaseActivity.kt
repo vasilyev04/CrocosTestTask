@@ -11,13 +11,8 @@ open class BaseActivity: AppCompatActivity() {
 
     //enables home button for each activity calling this method
     fun enableActionHomeButton(enabled: Boolean){
-        if (enabled){
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        }else{
-            supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        }
+        supportActionBar?.setDisplayHomeAsUpEnabled(enabled)
     }
-
 
     //creates custom action bar for each activity calling this method
     fun createCustomActionBar(title: String){

@@ -187,18 +187,6 @@ class TrackOrderActivity : BaseActivity(), OnMapReadyCallback{
         googleMap.animateCamera(cameraUpdate)
     }
 
-    private fun calculateCenterOfRoute(route: List<LatLng>): LatLng {
-        var sumLat = 0.0
-        var sumLng = 0.0
-        for (point in route) {
-            sumLat += point.latitude
-            sumLng += point.longitude
-        }
-        val avgLat = sumLat / route.size
-        val avgLng = sumLng / route.size
-        return LatLng(avgLat, avgLng)
-    }
-
     private fun setActivitySettings(){
         val actionBarTitle = ContextCompat.getString(this, R.string.title_order_tracking)
         createCustomActionBar(actionBarTitle)

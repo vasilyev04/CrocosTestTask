@@ -19,7 +19,6 @@ data class OrderEntity(
     val orderedTime: String = "",
     val packedTime: String = "",
     val deliveredTime: String = ""
-
 ){
     companion object{
         const val UNDEFINED_ID = -1L

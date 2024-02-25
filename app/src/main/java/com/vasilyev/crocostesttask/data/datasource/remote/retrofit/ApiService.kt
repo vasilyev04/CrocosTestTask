@@ -13,7 +13,7 @@ interface ApiService {
         @Query("origin") origin: String,
         @Query("destination") destination: String,
         @Query("key") apiKey: String = API_KEY
-    ): Response<DirectionResponse>
+    ): Result<DirectionResponse>
 
 
     companion object{

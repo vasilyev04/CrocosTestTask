@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -32,6 +34,7 @@ class TrackOrderActivity : BaseActivity(), OnMapReadyCallback{
     private val viewModel: TrackOrderViewModel by viewModels()
 
     private lateinit var googleMap: GoogleMap
+    private lateinit var order: Order
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +72,7 @@ class TrackOrderActivity : BaseActivity(), OnMapReadyCallback{
     private fun observeViewModel(){
         viewModel.order.observe(this){ order ->
             viewModel.getRoute(order)
+            this.order = order
             fillBottomSheet(order)
         }
 
@@ -83,6 +87,10 @@ class TrackOrderActivity : BaseActivity(), OnMapReadyCallback{
 
         viewModel.endLocation.observe(this){ endLocation ->
             setEndMarker(endLocation.lat, endLocation.lng)
+        }
+
+        viewModel.fetchMapError.observe(this){
+            showNetworkErrorDialog()
         }
     }
 
@@ -221,6 +229,30 @@ class TrackOrderActivity : BaseActivity(), OnMapReadyCallback{
 
             return intent
         }
+    }
+
+    private fun showNetworkErrorDialog() {
+        val title = ContextCompat.getString(this, R.string.dialog_network_error_title)
+        val message = ContextCompat.getString(this, R.string.dialog_network_error_message)
+        val positiveButton = ContextCompat.getString(this, R.string.dialog_network_error_positive_button)
+        val negativeButton = ContextCompat.getString(this, R.string.dialog_network_error_negative_button)
+
+        val alertDialogBuilder = AlertDialog.Builder(this).apply {
+            setTitle(title)
+            setMessage(message)
+            setPositiveButton(positiveButton){ dialog, btnIndex ->
+                viewModel.getRoute(order)
+                dialog.dismiss()
+            }
+
+            setNegativeButton(negativeButton){ dialog, btnIndex ->
+                finish()
+            }
+        }
+
+        val alertDialog = alertDialogBuilder.create()
+
+        alertDialog.show()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

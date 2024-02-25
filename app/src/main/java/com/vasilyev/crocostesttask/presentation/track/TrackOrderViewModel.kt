@@ -37,14 +37,22 @@ class TrackOrderViewModel: ViewModel() {
     val endLocation: LiveData<EndLocationModel>
         get() = _endLocation
 
+    private val _fetchMapError: MutableLiveData<Throwable> = MutableLiveData()
+    val fetchMapError: LiveData<Throwable>
+        get() = _fetchMapError
+
 
     fun getRoute(order: Order){
         viewModelScope.launch {
-            val route = getRouteUseCase.invoke(order.restaurantAddress, order.deliveryAddress)
+            val result = getRouteUseCase.invoke(order.restaurantAddress, order.deliveryAddress)
 
-            _route.postValue(decodePoly(route.route))
-            _startLocation.postValue(route.startLocation)
-            _endLocation.postValue(route.endLocation)
+            result.onSuccess { route ->
+                _route.postValue(decodePoly(route.route))
+                _startLocation.postValue(route.startLocation)
+                _endLocation.postValue(route.endLocation)
+            }.onFailure { error ->
+                _fetchMapError.postValue(error)
+            }
         }
     }
 

@@ -30,4 +30,10 @@
     <string name="amount_paid">Amount Paid:</string>
     <string name="order_summary">Order Summary</string>
 
+    <!-- Network Alert Dialog -->
+    <string name="dialog_network_error_title">Network connection error</string>
+    <string name="dialog_network_error_message">Please check your internet connection and try again</string>
+    <string name="dialog_network_error_positive_button">Retry</string>
+    <string name="dialog_network_error_negative_button">Cancel</string>
+
 </resources>

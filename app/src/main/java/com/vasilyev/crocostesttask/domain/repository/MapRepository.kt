@@ -4,5 +4,5 @@ import com.vasilyev.crocostesttask.domain.model.route.Route
 
 interface MapRepository {
 
-    suspend fun getRoute(origin: String, destination: String): Route
+    suspend fun getRoute(origin: String, destination: String): Result<Route>
 }

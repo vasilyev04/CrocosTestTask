@@ -70,6 +70,9 @@ dependencies {
     //Progress stepper
     implementation ("com.ernestoyaquello.stepperform:vertical-stepper-form:2.7.0")
 
+    //Kotlin Result API for Retrofit
+    implementation ("com.github.skydoves:retrofit-adapters-result:1.0.9")
+
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")

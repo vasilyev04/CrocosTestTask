@@ -1,5 +1,6 @@
 package com.vasilyev.crocostesttask.data.datasource.remote.retrofit
 
+import com.skydoves.retrofit.adapters.result.ResultCallAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -10,6 +11,7 @@ object RetrofitInstance {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(ResultCallAdapterFactory.create())
             .build()
     }
 
